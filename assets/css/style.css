@@ -2,3 +2,9 @@ header {
   background-color: #5ca0f2;
   background-image: linear-gradient(315deg, #5ca0f2 0%, #f5f7f6 74%);
 }
+.search-box {
+  background-color: #4696cc;
+}
+.btn {
+  background-color: #8dcff5;
+}

@@ -18,17 +18,26 @@
     </header>
     <main>
       <!-- search form with button and input field -->
-      <div>
-        <form action="">
-          <input type="text" />
-          <button></button>
-        </form>
-      </div>
-      <!-- right side results, large result for searched city and five day card element -->
-      <div>
-        <div></div>
-        <div>
-          <!-- going to be a flex container -->
+      <div class="row">
+        <div class="col-12 p-2 search-box">
+          <form id="search-form" class="border p-2">
+            <input type="text" id="city-input" class="form-input" />
+            <button type="submit" class="btn submit-btn">Search</button>
+          </form>
+          <div class="border prior-search"></div>
+        </div>
+        <!-- right side results, large result for searched city and five day card element -->
+        <div class="col-12 col-md-9">
+          <div id="current-weather" class="current-city">
+            <div class="col-12">
+              <h2 id="searched-city"></h2>
+              <div id="weather-container" class="list-group"></div>
+            </div>
+          </div>
+          <div class="row border" id="five-day-forecast">
+            <h2 class="col-12" id="forecast"></h2>
+            <div class="d-flex" id="five-day-container"></div>
+          </div>
         </div>
       </div>
     </main>
