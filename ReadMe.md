@@ -17,3 +17,4 @@
 - THEN I am again presented with current and future conditions for that city
 
 [link to weather app](https://codenamehemingway.github.io/nifty-weather-dashboard/)
+![Screenshot](screenshot.png)
