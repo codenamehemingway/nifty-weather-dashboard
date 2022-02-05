@@ -13,18 +13,18 @@
   </head>
   <body>
     <!-- header/jumbotron -->
-    <header class="col-md-auto justify-center">
+    <header class="justify-center text-center">
       <h1>Weather Dashboard</h1>
     </header>
     <main>
       <!-- search form with button and input field -->
       <div class="row">
-        <div class="col-12 p-2 search-box">
+        <div class="col-12 p-2 search-box col-md-3">
           <form id="search-form" class="border p-2">
             <input type="text" id="city-input" class="form-input" />
             <button type="submit" class="btn submit-btn">Search</button>
           </form>
-          <div class="border prior-search"></div>
+          <div id="past-search-buttons" class="border prior-search"></div>
         </div>
         <!-- right side results, large result for searched city and five day card element -->
         <div class="col-12 col-md-9">
@@ -45,6 +45,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://momentjs.com/downloads/moment.js"></script>
     <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/config.js"></script>
+    <!-- <script src="./assets/js/config.js"></script> -->
   </body>
 </html>

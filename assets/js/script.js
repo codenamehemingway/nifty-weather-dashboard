@@ -25,8 +25,8 @@ var formSubmission = function (event) {
   } else {
     alert("Please enter a City");
   }
-  saveSearch();
-  pastSearch(city);
+  saveSearch(city);
+  pastSearch();
 };
 
 var saveSearch = function () {
@@ -162,7 +162,7 @@ var display5Day = function (weather) {
 
     var forecastTempEl = document.createElement("span");
     forecastTempEl.classList = "card-body text-center";
-    forecastTempEl.textContent = dailyForecast.main.temp + " °F";
+    forecastTempEl.textContent = dailyForecast.main.temp_max + " °F";
 
     forecastEl.appendChild(forecastTempEl);
 
@@ -175,24 +175,37 @@ var display5Day = function (weather) {
     multiDayContainerEl.appendChild(forecastEl);
   }
 };
+// pulling from storage
+function loadLocations() {
+  var locationsArray = localStorage.getItem("cities");
+  if (locationsArray) {
+    cities = JSON.parse(locationsArray);
+    pastSearch();
+  } else {
+    localStorage.setItem("locations", JSON.stringify(cities));
+  }
+}
+// showing cities from storage
+function pastSearch() {
+  var divLocations = $("#past-search-buttons");
+  divLocations.empty();
 
-// var pastSearch = function (pastSearch) {
-//   pastSearchEl = document.createElement("button");
-//   pastSearchEl.textContent = pastSearch;
-//   pastSearchEl.classList = "d-flex w-100 btn-light border p-2";
-//   pastSearchEl.setAttribute("data-city", pastSearch);
-//   pastSearchEl.setAttribute("type", "submit");
+  $.each(cities, function (index, item) {
+    var a = $("<a>")
+      .addClass("list-group-item list-group-item-action city")
+      .attr("data-city", cities[index])
+      .text(cities[index]);
+    divLocations.append(a);
+  });
 
-//   priorSearchButtonEl.prepend(pastSearchEl);
-// };
+  $("#past-search-buttons > a").off();
 
-// var pastSearchHandler = function (event) {
-//   var city = event.target.getAttribute("data-city");
-//   if (city) {
-//     getWeather(city);
-//     get5Day(city);
-//   }
-// };
+  $("#past-search-buttons > a").click(function (event) {
+    var element = event.target;
+    var city = $(element).attr("data-city");
 
+    loadLocations(city, true);
+  });
+}
 searchFormEl.addEventListener("submit", formSubmission);
-// priorSearchButtonEl.addEventListener("click", pastSearchHandler);
+priorSearchButtonEl.addEventListener("click", priorSearchButtonEl);
